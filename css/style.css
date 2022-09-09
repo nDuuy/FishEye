@@ -52,42 +52,34 @@ header {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+    justify-items: center;
 }
 
-.photographer-profile {
+.thumb {
     justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.photographer-profile {
-    margin: 1vh 4vh 1vh 4vh;
-}
-
-.photographer_section h2 {
-    color: #D3573C;
-    font-size: 1.6rem;
-}
-
-.photographer_section img {
-    height: 225px;
-    width: 215px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.photographIndexDetail {
+.thumb a {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-blockquote {
-    padding: 2vh 0vh 2vh 0vh;
-    white-space: nowrap;
+.thumb img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-h4 {
+a h2 {
+    color: #D3573C;
+    font-size: 1.6rem;
+}
+
+.city-country {
     color: #D3573C;
 }

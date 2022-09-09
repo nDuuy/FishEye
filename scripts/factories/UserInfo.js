@@ -32,6 +32,7 @@ function photographerFactory(data) {
 		// create and link p for city and country 
 		const location = document.createElement('p');
 		location.textContent = `${city}, ${country}`;
+		location.className = "city-country"
 
 		// create and link p for tagline
 		const Tagline = document.createElement('p');
