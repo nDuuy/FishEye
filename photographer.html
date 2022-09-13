@@ -11,31 +11,54 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
 
     <section class="UserWork"></section>
 
+    <div class="likeAndPrice">
+      <div class="like"></div>
+      <div class="pricePerDay">/</div>
+    </div>
+
   </main>
-  <!-- <div id="contact_modal">
+  <div id="contact_modal">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
+      <form class="FormContact">
+        <div class="formData">
+          <label for="FirtName">Prénom</label>
+          <input class="text-control" type="text" placeholder="younes" required="required"
+            pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
+            title="Veuillez entrer 2 caractères ou plus pour le champ du Prénom." />
+        </div>
+        <div class="formData">
+          <label for="LastName">Nom</label><br />
+          <input class="text-control" type="text" placeholder="boudjemaa" required="required"
+            pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
+            title="Veuillez entrer 2 caractères ou plus pour le champ du Nom." />
+        </div>
+        <div class="formData">
+          <label for="email">E-mail</label><br />
+          <input class="text-control" type="email" placeholder="example@example.com" aria-required="true"
+            pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$"
+            required="required" title="Veuillez entrer un email valide." />
+        </div>
+        <div class="formData">
+          <label for="Msg">Votre message</label>
+          <input type="text" class="text-control" name="message" required="none">
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
     </div>
-  </div> -->
+  </div>
   <script src="/scripts/factories/UserInfo.js"></script>
   <script src="/scripts/factories/UserWork.js"></script>
   <script src="/scripts/pages/photographer.js"></script>

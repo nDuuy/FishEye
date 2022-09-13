@@ -1,11 +1,83 @@
-#contact_modal {
-    display: none;
-}
+/* header */
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Photographer-Profile {
+    padding: 0px 7vw 0px 2vw;
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info h1 {
+    font-size: 3.5rem;
+}
+
+.location-info {
+    color: #D3573C;
+    padding: 10px 0px;
+    font-size: 1.3rem;
+}
+
+.info p {
+    font-size: 1.5rem;
+}
+
+.Btn-Img {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.Id-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0px 0vw 0px 10vw;
+    box-shadow: 0px 3px 20px -2px;
+}
+
+/* main */
+
+/* like and price  */
+
+.likeAndPrice {
+    background-color: violet;
+    border-radius: 15px 15px 0px 0px;
+    width: 17vw;
+    height: 9vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 91vh;
+    left: 80vw;
+}
+
+/* button contact */
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
 }
 
 .contact_button {
@@ -19,19 +91,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin: 30px 0px 0px 0px;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
+
+/* modal  */
 
 .modal header {
     justify-content: space-between;
@@ -47,6 +111,32 @@
     font-weight: normal;
     text-align: center;
 }
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: 2vh auto;
+    animation: modalopen 0.5s;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* form */
 
 form {
     display: flex;
