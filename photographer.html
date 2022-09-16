@@ -18,23 +18,25 @@
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
 
-    <section class="UserWork"></section>
+    <div class="userMedia"></div>
+
+
 
     <div class="likeAndPrice">
       <div class="like"></div>
-      <div class="pricePerDay">/</div>
+      <div class="pricePerDay">€/Jour</div>
     </div>
 
   </main>
   <div id="contact_modal">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
+        <h2 class="NameOfPhotographer"></h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
       <form class="FormContact">
         <div class="formData">
-          <label for="FirtName">Prénom</label>
+          <label for="FirtName">Prénom</label><br>
           <input class="text-control" type="text" placeholder="younes" required="required"
             pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
             title="Veuillez entrer 2 caractères ou plus pour le champ du Prénom." />
@@ -52,7 +54,7 @@
             required="required" title="Veuillez entrer un email valide." />
         </div>
         <div class="formData">
-          <label for="Msg">Votre message</label>
+          <label for="Msg">Votre message</label><br>
           <input type="text" class="text-control" name="message" required="none">
         </div>
         <button class="contact_button">Envoyer</button>

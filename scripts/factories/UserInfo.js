@@ -1,12 +1,15 @@
 function photographerFactory(data) {
-
+	// debugger
 	// link to data.json
 	const {
-		portrait, name, city, country, tagline, price, id
+		portrait, name, city, country, tagline, price, id, title, image, video
 	} = data;
 
 	// link to data.json and photographer pic
+	const pictures = `assets/images/${image}`;
 	const picture = `assets/photographers/ID_Photo/${portrait}`;
+	const vids = `assets/images/${video}`;
+
 
 	function getUserCardDOM() {
 
@@ -85,7 +88,7 @@ function photographerFactory(data) {
 		imgDiv.className = 'Btn-Img'
 
 		// create btn contact and ad onClick function 
-		const btnContact = document.createElement( 'button' )
+		const btnContact = document.createElement('button')
 		btnContact.innerHTML = "Contactez-moi"
 		btnContact.className = "contact_button"
 		btnContact.addEventListener('click', function displayModal() {
@@ -116,9 +119,43 @@ function photographerFactory(data) {
 		return (UserProfil);
 	}
 
+	function getMediasCards() {
+		let container = document.createElement("div");
+		container.setAttribute("class", "cardSize");
+
+		//crée le titre
+		const pictureTitle = document.createElement("p").textContent = title
+
+		//crée l'élement pictureLegend titre
+		let legendContainer = document.createElement("div");
+
+		// crée element container de tout
+		legendContainer.setAttribute("class", "underpicture");
+
+		// legendContainer.append(pictureTitle);
+		legendContainer.append(pictureTitle)
+
+		if (image) {
+			let newImage = document.createElement("img");
+			newImage.setAttribute("src", pictures);
+			newImage.setAttribute("class", "picturesSize");
+			newImage.style = "cursor:pointer";
+			container.append(legendContainer, newImage);
+
+		} else if (video) {
+			let newVideo = document.createElement("video");
+			newVideo.setAttribute("src", vids);
+			newVideo.setAttribute("class", "controls");
+			newVideo.controls = true;
+			container.append(legendContainer, newVideo);
+		}
+		return (container);
+	}
+
+
 	// return our function
 	return {
-		getUserCardDOM, getProfilDom
+		getUserCardDOM, getProfilDom, price, getMediasCards
 	};
 
 }
