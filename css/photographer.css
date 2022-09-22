@@ -3,11 +3,12 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0px auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 80%;
+    justify-content: center;
 }
 
 .Photographer-Profile {
@@ -51,6 +52,51 @@
 }
 
 /* main */
+
+.thumb-img {
+    width: 22vw;
+    height: 27vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 3px 20px -2px;
+}
+
+.thumb-vdieo {
+    width: 25vw;
+    height: 25vh;
+    object-fit: cover;
+    box-shadow: 0px 3px 20px -2px;
+}
+
+.EverythingDiv {
+    margin: 15px 0px 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.likeOfMedia {
+    display: flex;
+    cursor: pointer;
+}
+
+.number {
+    margin: 0px 5px 0px 0px;
+}
+
+.userMedia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px auto;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.thumb-imgfull {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 15px 20px 15px 20px;
+}
 
 /* like and price  */
 
@@ -164,4 +210,87 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/* lightbox  */
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #E5E5E5;
+}
+
+.lightbox-active {
+    display: flex;
+}
+
+.lightbox img {
+    position: absolute;
+    z-index: 1;
+    width: 1050px;
+    height: 88%;
+
+}
+
+.lightbox video {
+    position: absolute;
+    z-index: 1;
+    width: 1050px;
+    height: 88%;
+}
+
+.lightbox p {
+    position: absolute;
+    top: 94%;
+    left: calc(50% - 1050px / 2);
+    font-size: 24px;
+    line-height: 31px;
+    color: #911C1C;
+    margin: 12px 0 0;
+}
+
+/* lighbox nav  */
+
+.lightbox nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1050px;
+}
+
+.lightbox .previous,
+.lightbox .next,
+.lightbox .close {
+    cursor: pointer;
+}
+
+.lightbox .previous,
+.lightbox .next {
+    height: 48px;
+    width: 42px;
+    margin: 0 35px;
+    object-fit: contain;
+}
+
+.lightbox .previous {
+    transform: rotate(180deg);
+}
+
+.lightbox .close {
+    position: absolute;
+    top: calc(6% + 20px);
+    right: calc(50% - 524px - 77px);
+    height: 42px;
+    width: 42px;
+}
+
+.close.active {
+    display: none;
 }

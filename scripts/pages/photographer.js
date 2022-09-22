@@ -8,11 +8,12 @@ async function getData() {
 }
 
 
-
 // show information of photographer 
-async function displayUserData(photographer) {
+async function displayUserData(photographer, DataMedia) {
 
 	// debugger
+
+	// header section
 
 	// for connect to html element
 	const UserHeader = document.querySelector(".photograph-header");
@@ -20,53 +21,54 @@ async function displayUserData(photographer) {
 	const photographerInfo = photographerFactory(photographer);
 	// to get our User data function
 	const UserProfile = photographerInfo.getProfilDom();
+	// create element
+	UserHeader.appendChild(UserProfile);
+
+	//price div section
+
 	// connect to html 
 	const UserPrice = document.querySelector(".pricePerDay");
 	// use factory function to find price we feth early
 	const pricePerDay = document.createTextNode(photographerInfo.price);
-
-	// create element
-	UserHeader.appendChild(UserProfile);
-
 	// for insert price in html before
 	UserPrice.insertBefore(pricePerDay, UserPrice.firstChild);
 
+	// media display section 
 
-	const UserMedias = document.querySelector(".userMedia");
-
-	const UserPicVid = photographerInfo.getMediasCards();
-
-	UserMedias.appendChild(UserPicVid)
-
-
+	// to connect to html
+	const UserWorkSection = document.querySelector(".userMedia")
+	// use filter to find photographer by this id
+	const Works = DataMedia.filter(Media => Media.photographerId == getUserId())
+	// to connect to factory function and diplay it
+	Works.forEach((media) => {
+		const photographerWork = photographerFactory(media);
+		const UserWorkDom = photographerWork.getUserWorkDOM();
+		UserWorkSection.appendChild(UserWorkDom);
+	})
 }
 
-// async function displayWorkData(DataMedia) {
+async function totalLike() {
+	// debugger
+	const PicVid = document.querySelector(".userMedia");
+	const likes = PicVid.querySelectorAll(".number");
+	const totalCount = document.querySelector(".like");
 
-// 	// debugger
+	let count = 0;
+	likes.forEach(like => count += parseInt(like.textContent))
 
-
-
-// 	// const UserWorkSection = document.querySelector(".userMedia")
-
-// 	const Works = DataMedia.filter(Media => Media.PhotographerID == getUserId())
-
-// 	Works.forEach((media) => {
-// 		const photographerWork = WorkFactory(media);
-// 		const UserWorkDom = photographerWork.getMediasCards();
-// 		UserWorkSection.appendChild(UserWorkDom);
-// 	})
-// }
+	totalCount.textContent = count
+}
 
 // get id of photographer 
 function getUserId() {
+	// debugger
 
-	// use 
+	// get id of user in url+
 	const urlSearchParams = new URLSearchParams(window.location.search);
+	// return id 
 	const params = Object.fromEntries(urlSearchParams.entries());
 	return params.photographer;
 }
-
 
 
 async function init() {
@@ -81,9 +83,8 @@ async function init() {
 	document.querySelector(".NameOfPhotographer").textContent = `Conctater-moi ${photographer.name}`;
 
 	// for display data 
-	displayUserData(photographer);
-	// displayWorkData(media);
-
+	displayUserData(photographer, media);
+	totalLike();
 }
 
 init();

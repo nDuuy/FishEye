@@ -2,13 +2,13 @@ function photographerFactory(data) {
 	// debugger
 	// link to data.json
 	const {
-		portrait, name, city, country, tagline, price, id, title, image, video
+		portrait, name, city, country, tagline, price, id, title, image, video, likes, date
 	} = data;
+	const picture = `assets/images/${image}`;
+	const videoData = `assets/images/${video}`;
 
 	// link to data.json and photographer pic
-	const pictures = `assets/images/${image}`;
-	const picture = `assets/photographers/ID_Photo/${portrait}`;
-	const vids = `assets/images/${video}`;
+	const pictureId = `assets/photographers/ID_Photo/${portrait}`;
 
 
 	function getUserCardDOM() {
@@ -24,7 +24,7 @@ function photographerFactory(data) {
 
 		// create and link and html atribute img to photographer 
 		const img = document.createElement('img');
-		img.setAttribute("src", picture);
+		img.setAttribute("src", pictureId);
 		img.setAttribute("alt", name);
 		img.className = 'user-id';
 
@@ -35,7 +35,7 @@ function photographerFactory(data) {
 		// create and link p for city and country 
 		const location = document.createElement('p');
 		location.textContent = `${city}, ${country}`;
-		location.className = "city-country"
+		location.className = "city-country";
 
 		// create and link p for tagline
 		const Tagline = document.createElement('p');
@@ -68,7 +68,7 @@ function photographerFactory(data) {
 
 		// create div for name and tagline user 
 		const userInfo = document.createElement('div');
-		userInfo.className = 'info'
+		userInfo.className = 'info';
 
 		// create h1 for name 
 		const h1Name = document.createElement('h1');
@@ -77,20 +77,20 @@ function photographerFactory(data) {
 		// create and link p for city and country 
 		const location = document.createElement('p');
 		location.textContent = `${city}, ${country}`;
-		location.className = 'location-info'
+		location.className = 'location-info';
 
 		// create and link p for tagline
 		const Tagline = document.createElement('p');
 		Tagline.textContent = tagline;
 
 		// div for user img and contact btn
-		const imgDiv = document.createElement('div')
-		imgDiv.className = 'Btn-Img'
+		const imgDiv = document.createElement('div');
+		imgDiv.className = 'Btn-Img';
 
 		// create btn contact and ad onClick function 
-		const btnContact = document.createElement('button')
-		btnContact.innerHTML = "Contactez-moi"
-		btnContact.className = "contact_button"
+		const btnContact = document.createElement('button');
+		btnContact.innerHTML = "Contactez-moi";
+		btnContact.className = "contact_button";
 		btnContact.addEventListener('click', function displayModal() {
 			const modal = document.getElementById("contact_modal");
 			modal.style.display = "block";
@@ -98,17 +98,17 @@ function photographerFactory(data) {
 
 		// img of user
 		const img = document.createElement('img');
-		img.setAttribute("src", picture);
+		img.setAttribute("src", pictureId);
 		img.setAttribute("alt", name);
 		img.className = 'Id-img';
 
 		// to create the elements on userprofile div
-		UserProfil.appendChild(userInfo)
-		UserProfil.appendChild(imgDiv)
+		UserProfil.appendChild(userInfo);
+		UserProfil.appendChild(imgDiv);
 
 		// to create the elements on imgdiv
 		imgDiv.appendChild(img);
-		imgDiv.appendChild(btnContact)
+		imgDiv.appendChild(btnContact);
 
 		// to create elements on di userInfo
 		userInfo.appendChild(h1Name);
@@ -119,43 +119,99 @@ function photographerFactory(data) {
 		return (UserProfil);
 	}
 
-	function getMediasCards() {
-		let container = document.createElement("div");
-		container.setAttribute("class", "cardSize");
 
-		//crée le titre
-		const pictureTitle = document.createElement("p").textContent = title
+	function getUserWorkDOM() {
 
-		//crée l'élement pictureLegend titre
-		let legendContainer = document.createElement("div");
+		// create div 
+		const PictureDivs = document.createElement('div');
+		PictureDivs.className = 'thumb-imgfull';
 
-		// crée element container de tout
-		legendContainer.setAttribute("class", "underpicture");
+		// variable for media
+		var PicVideo = getMedia();
 
-		// legendContainer.append(pictureTitle);
-		legendContainer.append(pictureTitle)
 
-		if (image) {
-			let newImage = document.createElement("img");
-			newImage.setAttribute("src", pictures);
-			newImage.setAttribute("class", "picturesSize");
-			newImage.style = "cursor:pointer";
-			container.append(legendContainer, newImage);
+		// div who contain title and like
+		const EverythingDiv = document.createElement('div');
+		EverythingDiv.className = "EverythingDiv"
 
-		} else if (video) {
-			let newVideo = document.createElement("video");
-			newVideo.setAttribute("src", vids);
-			newVideo.setAttribute("class", "controls");
-			newVideo.controls = true;
-			container.append(legendContainer, newVideo);
-		}
-		return (container);
+		// title of media
+		const PictureTitle = document.createElement('p');
+		PictureTitle.textContent = title;
+
+		// Div like 
+		const likeOfMedia = document.createElement('div');
+		likeOfMedia.className = "likeOfMedia";
+
+		// div for number 
+		const numberOfLike = document.createElement('div');
+		numberOfLike.textContent = likes;
+		numberOfLike.className = "number";
+
+		// div for like btn and heart icon 
+		const LikeAndIcon = document.createElement('div');
+		LikeAndIcon.addEventListener('click', function likeAdd1(e) {
+
+			// use param to target actual media who our mousse are 
+			const target = e.currentTarget;
+
+			// select section to incremant 
+			target.querySelector(".number").textContent = parseInt(target.textContent) + 1;
+		});
+		LikeAndIcon.setAttribute("role", "button");
+		LikeAndIcon.ariaLabel = "LikeAndIcon";
+		LikeAndIcon.className = "LikeAndIcon";
+
+		// img
+		const icon = document.createElement('img')
+		icon.src = 'assets/icons/heart.svg';
+		icon.setAttribute("alt", likes);
+		icon.className = "iconSvg";
+
+		// create ellements on div pictureDivs
+		PictureDivs.appendChild(EverythingDiv);
+		PictureDivs.appendChild(PicVideo);
+
+		// create ellements on EverythingDiv
+		EverythingDiv.appendChild(PictureTitle);
+		EverythingDiv.appendChild(likeOfMedia);
+
+		// create ellements on div likeOfMedia
+		// likeOfMedia.appendChild(numberOfLike);
+		likeOfMedia.appendChild(LikeAndIcon);
+
+		// create ellements on div 
+		LikeAndIcon.appendChild(icon);
+		LikeAndIcon.appendChild(numberOfLike);
+
+		return (PictureDivs);
 	}
 
+	function getMedia() {
+
+		// debugger
+
+		var userMedia = null;
+
+		if (image != null) {
+			userMedia = document.createElement('img');
+			userMedia.setAttribute("src", picture);
+			userMedia.setAttribute("alt", title);
+			userMedia.classList.add("thumb-img", "lightbox-img")
+		} else if (video != null) {
+			userMedia = document.createElement('video');
+			userMedia.setAttribute("src", videoData);
+			userMedia.setAttribute("alt", title);
+			userMedia.controls = true
+			userMedia.classList.add("thumb-vdieo", "lightbox-vdo")
+		}
+
+		userMedia.setAttribute("onclick", "lightbox(event)");
+		userMedia.dataset.date = date
+		return (userMedia);
+	}
 
 	// return our function
 	return {
-		getUserCardDOM, getProfilDom, price, getMediasCards
+		getUserCardDOM, getProfilDom, price, getUserWorkDOM
 	};
-
 }
