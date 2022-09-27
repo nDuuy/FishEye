@@ -19,19 +19,34 @@
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
 
+    <label for="list" class="dropdown-label">Trier par</label>
+    <div data-value="popularity" class="dropdown" aria-label="Order By">
+      <button onclick="dropdown(event)" aria-haspopup="listbox" id="dropdownButton">Popularité</button>
+      <img src="assets/icons/arrow.svg" alt="" class="arrow">
+      <ul class="dropdown-options" role="listbox" aria-labelledby="dropdownButton"
+        aria-activedescendant="popularityDropdown">
+        <li onclick="selectOption(event)" class="dropdown-hide" data-value="popularity" role="option"
+          id="popularityDropdown" aria-selected="true">Popularité</li>
+        <li onclick="selectOption(event)" data-value="date" role="option" id="dateDropdown">Date
+        </li>
+        <li onclick="selectOption(event)" data-value="title" role="option" id="titleDropdown">Titre
+        </li>
+      </ul>
+    </div>
+
     <div class="userMedia"></div>
 
     <div class="lightbox">
       <p class="titleLightbox"></p>
       <nav>
         <img src="/assets/icons/lightboxArrow.svg" alt="previousArrow" class="previous" aria-label="Previous image"
-          role="link">
-        <img src="/assets/icons/lightboxArrow.svg" alt="nextArrow" class="next" aria-label="Next image" role="link">
+          role="link" onclick="control(event)">
+        <img src="/assets/icons/lightboxArrow.svg" alt="nextArrow" class="next" aria-label="Next image" role="link"
+          onclick="control(event)">
       </nav>
       <img src="/assets/icons/close.svg" alt="close" class="close" aria-label="Close lightboxx" role="button"
-        onclick="close()">
+        onclick="control(event)">
     </div>
-
 
     <div class="likeAndPrice">
       <div class="like"><img src="/assets/icons/heart.svg" alt="like-heart"></div>
@@ -76,6 +91,7 @@
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/lightbox.js"></script>
+  <script src="/scripts/utils/list.js"></script>
 </body>
 
 </html>

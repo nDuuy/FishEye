@@ -70,6 +70,52 @@ function getUserId() {
 	return params.photographer;
 }
 
+function orderWork() {
+	const photographWork = document.querySelector(".userMedia");
+	let contentNodes = document.querySelectorAll('.thumb-imgfull');
+	const order = document.querySelector(".dropdown").dataset.value;
+	// Converti la nodelist en array, le call appelle la nodelist en tant que 'this' dans la méthode et array.prototype défini le type de 'this'
+	let content = Array.prototype.slice.call(contentNodes);
+
+	switch (order) {
+		case "popularity":
+			// De + à -
+			content.sort(
+				function (item, nextItem) {
+					let firstNumber = parseInt(item.querySelector(".number").textContent);
+					let secondNumber = parseInt(nextItem.querySelector(".number").textContent);
+					return secondNumber - firstNumber;
+				}
+			)
+			break;
+		case "date":
+			// De + à -
+			content.sort(
+				function (item, nextItem) {
+					let firstString = item.querySelector("[data-date]").dataset.date;
+					let secondString = nextItem.querySelector("[data-date]").dataset.date;
+					return secondString.localeCompare(firstString);
+				}
+			)
+			break;
+		case "title":
+			// De A à B
+			content.sort(
+				function (item, nextItem) {
+					let firstString = item.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
+					let secondString = nextItem.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
+					return firstString.localeCompare(secondString);
+				}
+			)
+			break;
+		default:
+			break;
+	}
+
+	photographWork.innerHTML = "";
+	content.forEach(item => photographWork.appendChild(item));
+}
+
 
 async function init() {
 
@@ -85,6 +131,7 @@ async function init() {
 	// for display data 
 	displayUserData(photographer, media);
 	totalLike();
+	orderWork();
 }
 
 init();
