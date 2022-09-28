@@ -71,16 +71,25 @@ function getUserId() {
 }
 
 function orderWork() {
+	// debugger
+
+	// for select our media and the option chose for filtre
 	const photographWork = document.querySelector(".userMedia");
 	let contentNodes = document.querySelectorAll('.thumb-imgfull');
 	const order = document.querySelector(".dropdown").dataset.value;
-	// Converti la nodelist en array, le call appelle la nodelist en tant que 'this' dans la méthode et array.prototype défini le type de 'this'
+
+	// Convert nodelist to array, call calls nodelist as 'this' in method and array.prototype defines type of 'this'
 	let content = Array.prototype.slice.call(contentNodes);
 
 	switch (order) {
+
+		// to filtred by number of like of each media
 		case "popularity":
-			// De + à -
+
 			content.sort(
+
+				// function for check what is the first number and the second and return an addition 
+				// and we class them to + to -
 				function (item, nextItem) {
 					let firstNumber = parseInt(item.querySelector(".number").textContent);
 					let secondNumber = parseInt(nextItem.querySelector(".number").textContent);
@@ -88,9 +97,14 @@ function orderWork() {
 				}
 			)
 			break;
+
+		// to filtred by date
 		case "date":
-			// De + à -
+
 			content.sort(
+
+				// function for check date of media by using the value date who we setup early
+				// and we class them to + to -
 				function (item, nextItem) {
 					let firstString = item.querySelector("[data-date]").dataset.date;
 					let secondString = nextItem.querySelector("[data-date]").dataset.date;
@@ -98,9 +112,14 @@ function orderWork() {
 				}
 			)
 			break;
+
+		// to filtred by title
 		case "title":
-			// De A à B
+
 			content.sort(
+
+				// function for check title of media
+				// and we class them by alphabetical classication
 				function (item, nextItem) {
 					let firstString = item.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
 					let secondString = nextItem.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
@@ -108,10 +127,13 @@ function orderWork() {
 				}
 			)
 			break;
+
+		// if anything is chose let the order by default
 		default:
 			break;
 	}
 
+	// to display our classed media for each photographer
 	photographWork.innerHTML = "";
 	content.forEach(item => photographWork.appendChild(item));
 }
