@@ -19,33 +19,34 @@
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
 
-    <label for="list" class="dropdown-label">Trier par</label>
-    <div data-value="popularity" class="dropdown" aria-label="Order By">
-      <button onclick="dropdown(event)" aria-haspopup="listbox" id="dropdownButton">Popularité</button>
-      <img src="assets/icons/arrow.svg" alt="" class="arrow">
-      <ul class="dropdown-options" role="listbox" aria-labelledby="dropdownButton"
-        aria-activedescendant="popularityDropdown">
-        <li onclick="selectOption(event)" class="dropdown-hide" data-value="popularity" role="option"
-          id="popularityDropdown" aria-selected="true">Popularité</li>
-        <li onclick="selectOption(event)" data-value="date" role="option" id="dateDropdown">Date
-        </li>
-        <li onclick="selectOption(event)" data-value="title" role="option" id="titleDropdown">Titre
-        </li>
-      </ul>
+    <div id="listOption"> <label for="list" class="dropdown-label">Trier par</label>
+      <div data-value="popularity" class="dropdown" aria-label="Order By">
+        <button onclick="dropdown(event)" aria-haspopup="listbox" id="dropdownButton" tabindex="0">Popularité</button>
+        <img src="assets/icons/arrow.svg" alt="" class="arrow">
+        <ul class="dropdown-options" role="listbox" aria-labelledby="dropdownButton"
+          aria-activedescendant="popularityDropdown">
+          <li onclick="selectOption(event)" class="dropdown-hide" data-value="popularity" role="option"
+            id="popularityDropdown" aria-selected="true" tabindex="0">Popularité</li>
+          <li onclick="selectOption(event)" data-value="date" role="option" id="dateDropdown" tabindex="0">Date
+          </li>
+          <li onclick="selectOption(event)" data-value="title" role="option" id="titleDropdown" tabindex="0">Titre
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="userMedia"></div>
 
-    <div class="lightbox">
+    <div class="lightbox" role="dialog">
       <p class="titleLightbox"></p>
       <nav>
         <img src="/assets/icons/lightboxArrow.svg" alt="previousArrow" class="previous" aria-label="Previous image"
-          role="link" onclick="control(event)">
+          role="link" onclick="control(event)" tabindex="0">
         <img src="/assets/icons/lightboxArrow.svg" alt="nextArrow" class="next" aria-label="Next image" role="link"
-          onclick="control(event)">
+          onclick="control(event)" tabindex="0">
       </nav>
       <img src="/assets/icons/close.svg" alt="close" class="close" aria-label="Close lightboxx" role="button"
-        onclick="control(event)">
+        onclick="control(event)" tabindex="0">
     </div>
 
     <div class="likeAndPrice">
@@ -54,11 +55,11 @@
     </div>
 
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog">
     <div class="modal">
       <header>
         <h2 class="NameOfPhotographer"></h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" tabindex="0" />
       </header>
       <form class="FormContact">
         <div class="formData">

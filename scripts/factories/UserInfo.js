@@ -91,9 +91,11 @@ function photographerFactory(data) {
 		const btnContact = document.createElement('button');
 		btnContact.innerHTML = "Contactez-moi";
 		btnContact.className = "contact_button";
+		// btnContact.setAttribute("tabindex", 0)
 		btnContact.addEventListener('click', function displayModal() {
 			const modal = document.getElementById("contact_modal");
 			modal.style.display = "block";
+			tabindexSet(-1);
 		});
 
 		// img of user
@@ -196,17 +198,19 @@ function photographerFactory(data) {
 			userMedia = document.createElement('img');
 			userMedia.setAttribute("src", picture);
 			userMedia.setAttribute("alt", title);
-			userMedia.classList.add("thumb-img", "lightbox-img")
+			userMedia.classList.add("thumb-img")
 		} else if (video != null) {
 			userMedia = document.createElement('video');
 			userMedia.setAttribute("src", videoData);
 			userMedia.setAttribute("alt", title);
 			userMedia.controls = true
-			userMedia.classList.add("thumb-vdieo", "lightbox-vdo")
+			userMedia.classList.add("thumb-vdieo")
 		}
 
 		userMedia.setAttribute("onclick", "lightbox(event)");
 		userMedia.dataset.date = date
+		userMedia.setAttribute("tabindex", 0)
+		userMedia.setAttribute("aria-haspopup", "dialog");
 		return (userMedia);
 	}
 

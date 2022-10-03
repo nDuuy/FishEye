@@ -3,7 +3,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0px auto;
+    margin: 10vh auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,69 +51,6 @@
     box-shadow: 0px 3px 20px -2px;
 }
 
-/* main */
-
-.thumb-img {
-    width: 22vw;
-    height: 27vh;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0px 3px 20px -2px;
-}
-
-.thumb-vdieo {
-    width: 25vw;
-    height: 25vh;
-    object-fit: cover;
-    box-shadow: 0px 3px 20px -2px;
-}
-
-.EverythingDiv {
-    margin: 15px 0px 5px 0px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.likeOfMedia {
-    display: flex;
-    cursor: pointer;
-}
-
-.number {
-    margin: 0px 5px 0px 0px;
-}
-
-.userMedia {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 20px auto;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.thumb-imgfull {
-    display: flex;
-    flex-direction: column-reverse;
-    padding: 15px 20px 15px 20px;
-}
-
-/* like and price  */
-
-.likeAndPrice {
-    background-color: #D3573C;
-    border-radius: 15px 15px 0px 0px;
-    width: 20vw;
-    height: 7vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 93vh;
-    left: 80vw;
-}
-
 /* button contact */
 
 #contact_modal {
@@ -140,7 +77,6 @@
     cursor: pointer;
     margin: 30px 0px 0px 0px;
 }
-
 
 /* modal  */
 
@@ -212,6 +148,68 @@ form input {
     border-radius: 5px;
 }
 
+/* main */
+
+.userMedia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px auto;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.thumb-imgfull {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 20px 30px 20px 30px;
+}
+
+.thumb-img {
+    width: 25vw;
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 3px 20px -2px;
+}
+
+.thumb-vdieo {
+    width: 25vw;
+    height: 25vh;
+    object-fit: cover;
+    box-shadow: 0px 3px 20px -2px;
+}
+
+.EverythingDiv {
+    margin: 15px 0px 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.likeOfMedia {
+    display: flex;
+    cursor: pointer;
+}
+
+.number {
+    margin: 0px 5px 0px 0px;
+}
+
+/* like and price  */
+
+.likeAndPrice {
+    background-color: #D3573C;
+    border-radius: 15px 15px 0px 0px;
+    width: 20vw;
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 93vh;
+    left: 70vw;
+}
+
 /* lightbox  */
 
 .lightbox {
@@ -270,6 +268,7 @@ form input {
     width: 42px;
     margin: 0 35px;
     object-fit: contain;
+    position: initial;
 }
 
 .lightbox .previous {

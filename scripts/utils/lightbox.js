@@ -18,13 +18,16 @@ function lightbox(event) {
     const userWork = getMediaLighbox();
     // return index 
     const indexMedia = userWork.indexOf(Work);
+    // let indexMedia = userWork.indexOf(Work);
     lightbox.dataset.key = indexMedia;
 
     // load function
+    // tabindexSet(-1)
     loadLightbox();
 
     // toggle the class active
     lightbox.classList.toggle('lightbox-active')
+
 
 }
 
@@ -40,10 +43,13 @@ function loadLightbox() {
     const currentMediaKey = lightbox.dataset.key;
     const currentMediaTitle = works[currentMediaKey].querySelector("p").textContent;
     const currentMedia = works[currentMediaKey].querySelector(".thumb-img").cloneNode(true);
+    currentMedia.setAttribute("tabindex", "4");
 
     // to insert media before title 
     lightbox.insertBefore(currentMedia, lightboxTtile);
     lightboxTtile.textContent = currentMediaTitle
+
+
 
 }
 
@@ -75,7 +81,7 @@ function nextMedia() {
     const medias = getMediaLighbox();
 
     // go next media by adding 1
-    if (controlKey < medias.length - 1) {
+    if (controlKey % medias.length + 1) {
         controlKey += 1;
         lightbox.dataset.key = controlKey;
         loadLightbox()
@@ -89,8 +95,11 @@ function previousMedia() {
     // select the arrow
     let controlKey = parseInt(lightbox.dataset.key)
 
+    const medias = getMediaLighbox();
+
+
     // go previous media by retired 1
-    if (controlKey > 0) {
+    if (controlKey % medias.length - 1) {
         controlKey -= 1;
         lightbox.dataset.key = controlKey;
         loadLightbox()
@@ -107,5 +116,6 @@ function closeMedia() {
     // toggle the class active
     lightbox.classList.toggle('close-off')
     document.querySelectorAll(".thumb-img")[controlKey].focus();
+    // tabindexSet(0)
 }
 

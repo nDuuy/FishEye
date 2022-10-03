@@ -121,8 +121,8 @@ function orderWork() {
 				// function for check title of media
 				// and we class them by alphabetical classication
 				function (item, nextItem) {
-					let firstString = item.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
-					let secondString = nextItem.querySelector(".thumb-imgfull>:nth-child(2)").textContent.toLowerCase();
+					let firstString = item.querySelector(".EverythingDiv>:nth-child(1)").textContent.toLowerCase();
+					let secondString = nextItem.querySelector(".EverythingDiv>:nth-child(1)").textContent.toLowerCase();
 					return firstString.localeCompare(secondString);
 				}
 			)
