@@ -204,7 +204,7 @@ function photographerFactory(data) {
 			userMedia.setAttribute("src", videoData);
 			userMedia.setAttribute("alt", title);
 			userMedia.controls = true
-			userMedia.classList.add("thumb-vdieo")
+			userMedia.classList.add("thumb-img")
 		}
 
 		userMedia.setAttribute("onclick", "lightbox(event)");

@@ -173,13 +173,6 @@ form input {
     box-shadow: 0px 3px 20px -2px;
 }
 
-.thumb-vdieo {
-    width: 25vw;
-    height: 25vh;
-    object-fit: cover;
-    box-shadow: 0px 3px 20px -2px;
-}
-
 .EverythingDiv {
     margin: 15px 0px 5px 0px;
     display: flex;
@@ -230,6 +223,14 @@ form input {
 }
 
 .lightbox img {
+    position: absolute;
+    z-index: 1;
+    width: 1050px;
+    height: 88%;
+
+}
+
+.lightbox video {
     position: absolute;
     z-index: 1;
     width: 1050px;
