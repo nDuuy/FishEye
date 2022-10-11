@@ -3,7 +3,7 @@ function getMediaLighbox() {
     const WorksElements = document.querySelectorAll(".userMedia>.thumb-imgfull");
 
     // Convert nodelist to array, call calls nodelist as 'this' in method and array.prototype defines type of 'this'
-    return Array.prototype.slice.call(WorksElements)
+    return Array.prototype.slice.call(WorksElements);
 }
 
 function lightbox(event) {
@@ -22,13 +22,11 @@ function lightbox(event) {
     lightbox.dataset.key = indexMedia;
 
     // load function
-    // tabindexSet(-1)
+    tabindexSet(-1)
     loadLightbox();
 
     // toggle the class active
-    lightbox.classList.toggle('lightbox-active')
-
-
+    lightbox.classList.toggle('lightbox-active');
 }
 
 function loadLightbox() {
@@ -47,77 +45,19 @@ function loadLightbox() {
 
     // to insert media before title 
     lightbox.insertBefore(currentMedia, lightboxTtile);
-    lightboxTtile.textContent = currentMediaTitle
+    lightboxTtile.textContent = currentMediaTitle;
 
-
-
+    lightbox.querySelector(".thumb-img").removeAttribute('onclick')
 }
 
-function control(event) {
 
-    // The switch statement evaluates an expression. 
-    // The value of the expression is then compared with the values of each case in the structure. 
-    // If there is a match, the associated block of code is executed. 
-    switch (event.currentTarget.className) {
-        case "next":
-            nextMedia();
-            break
-        case "previous":
-            previousMedia();
-            break;
-        case "close":
-            closeMedia();
-            break;
-    }
-}
-
-function nextMedia() {
-
-    // select lightbox
-    const lightbox = document.querySelector(".lightbox")
-    // select the arrow
-    let controlKey = parseInt(lightbox.dataset.key);
-    // get data from our early function
-    const medias = getMediaLighbox();
-
-    // go next media by adding 1
-    controlKey = (controlKey + 1) % medias.length;
-    lightbox.dataset.key = controlKey;
-    loadLightbox();
-}
-
-function previousMedia() {
-
-    // select lightbox
-    const lightbox = document.querySelector(".lightbox");
-    // select the arrow
-    let controlKey = parseInt(lightbox.dataset.key)
-
-    const medias = getMediaLighbox();
-    controlKey = (controlKey + (medias.length) - 1) % medias.length;
-    lightbox.dataset.key = controlKey;
-    loadLightbox();
-}
-
-function closeMedia() {
-
-    // select lightbox
-    const lightbox = document.querySelector(".lightbox");
-    // select the close 
-    const controlKey = parseInt(lightbox.dataset.key)
-
-    // toggle the class active
-    lightbox.classList.toggle('close-off')
-    document.querySelectorAll(".thumb-img")[controlKey].focus();
-    // tabindexSet(0)
-}
 
 function getMediaLighbox() {
     // debugger
     const WorksElements = document.querySelectorAll(".userMedia>.thumb-imgfull");
 
     // Convert nodelist to array, call calls nodelist as 'this' in method and array.prototype defines type of 'this'
-    return Array.prototype.slice.call(WorksElements)
+    return Array.prototype.slice.call(WorksElements);
 }
 
 function lightbox(event) {
@@ -136,11 +76,16 @@ function lightbox(event) {
     lightbox.dataset.key = indexMedia;
 
     // load function
-    // tabindexSet(-1)
+    tabindexSet(-1)
     loadLightbox();
 
     // toggle the class active
-    lightbox.classList.toggle('lightbox-active')
+    lightbox.classList.toggle('lightbox-active');
+
+
+    IsLightboxKeyListenerActive = true;
+
+
 }
 
 function loadLightbox() {
@@ -157,17 +102,94 @@ function loadLightbox() {
     let currentMedia = works[currentMediaKey].querySelector(".thumb-img");
     if (currentMedia) {
         currentMedia = currentMedia.cloneNode(true);
-    }
-    else {
+    } else {
         currentMedia = works[currentMediaKey].querySelector(".thumb-vdieo").cloneNode(true);
     }
     currentMedia.setAttribute("tabindex", "4");
 
     // to insert media before title 
     lightbox.insertBefore(currentMedia, lightboxTtile);
-    lightboxTtile.textContent = currentMediaTitle
-
-
-
+    lightbox.querySelector(".thumb-img").removeAttribute("onclick");
+    lightboxTtile.textContent = currentMediaTitle;
 }
 
+function control(event) {
+
+    // The switch statement evaluates an expression. 
+    // The value of the expression is then compared with the values of each case in the structure. 
+    // If there is a match, the associated block of code is executed. 
+    switch (event.currentTarget.className) {
+        case "next":
+            nextMedia();
+            break;
+        case "previous":
+            previousMedia();
+            break;
+        case "close":
+            closeMedia();
+            break;
+    }
+}
+
+function nextMedia() {
+
+    // select lightbox
+    const lightbox = document.querySelector(".lightbox");
+    // select the arrow
+    let controlKey = parseInt(lightbox.dataset.key);
+    // get data from our early function
+    const medias = getMediaLighbox();
+
+    // go next media by adding 1
+    controlKey = (controlKey + 1) % medias.length;
+    lightbox.dataset.key = controlKey;
+    loadLightbox();
+}
+
+function previousMedia() {
+
+    // select lightbox
+    const lightbox = document.querySelector(".lightbox");
+    // select the arrow
+    let controlKey = parseInt(lightbox.dataset.key);
+
+    const medias = getMediaLighbox();
+    controlKey = (controlKey + (medias.length) - 1) % medias.length;
+    lightbox.dataset.key = controlKey;
+    loadLightbox();
+}
+
+function closeMedia() {
+
+    // select lightbox
+    const lightbox = document.querySelector(".lightbox");
+    // select the close 
+    const controlKey = parseInt(lightbox.dataset.key);
+
+    // toggle the class active
+    lightbox.classList.toggle('lightbox-active');
+    document.querySelectorAll(".thumb-img")[controlKey].focus();
+    tabindexSet(0)
+}
+
+
+let IsLightboxKeyListenerActive = false;
+document.addEventListener('keydown',
+    function (event) {
+        IsLightboxKeyListenerActive ? handleLightboxKeyDown(event) : undefined;
+    }
+);
+
+function handleLightboxKeyDown(event) {
+    switch (event.key) {
+        case "ArrowLeft":
+            previousMedia()
+            break;
+        case "ArrowRight":
+            nextMedia()
+            break;
+        case "Escape":
+            closeMedia();
+            break;
+    }
+}

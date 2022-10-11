@@ -2,7 +2,7 @@ function photographerFactory(data) {
 	// debugger
 	// link to data.json
 	const {
-		portrait, name, city, country, tagline, price, id, title, image, video, likes, date
+		portrait, name, city, country, tagline, price, id, title, image, video, likes
 	} = data;
 	const picture = `assets/images/${image}`;
 	const videoData = `assets/images/${video}`;
@@ -44,6 +44,7 @@ function photographerFactory(data) {
 		// create and link p for price 
 		const Price = document.createElement('p');
 		Price.textContent = `${price}€/jour`;
+		Price.className = "priceHome";
 
 		// to create the elements
 		article.appendChild(LinkToUser);
@@ -134,11 +135,12 @@ function photographerFactory(data) {
 
 		// div who contain title and like
 		const EverythingDiv = document.createElement('div');
-		EverythingDiv.className = "EverythingDiv"
+		EverythingDiv.className = "EverythingDiv";
 
 		// title of media
 		const PictureTitle = document.createElement('p');
 		PictureTitle.textContent = title;
+		PictureTitle.className = "titleMediaName";
 
 		// Div like 
 		const likeOfMedia = document.createElement('div');
@@ -164,7 +166,7 @@ function photographerFactory(data) {
 		LikeAndIcon.className = "LikeAndIcon";
 
 		// img
-		const icon = document.createElement('img')
+		const icon = document.createElement('img');
 		icon.src = 'assets/icons/heart.svg';
 		icon.setAttribute("alt", likes);
 		icon.className = "iconSvg";
@@ -198,18 +200,17 @@ function photographerFactory(data) {
 			userMedia = document.createElement('img');
 			userMedia.setAttribute("src", picture);
 			userMedia.setAttribute("alt", title);
-			userMedia.classList.add("thumb-img")
+			userMedia.classList.add("thumb-img");
 		} else if (video != null) {
 			userMedia = document.createElement('video');
 			userMedia.setAttribute("src", videoData);
 			userMedia.setAttribute("alt", title);
-			userMedia.controls = true
-			userMedia.classList.add("thumb-img")
+			userMedia.controls = true;
+			userMedia.classList.add("thumb-img");
 		}
 
 		userMedia.setAttribute("onclick", "lightbox(event)");
-		userMedia.dataset.date = date
-		userMedia.setAttribute("tabindex", 0)
+		userMedia.setAttribute("tabindex", 0);
 		userMedia.setAttribute("aria-haspopup", "dialog");
 		return (userMedia);
 	}

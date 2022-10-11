@@ -12,28 +12,32 @@
 
 <body>
   <header>
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <a href="./index.html" onkeydown="openlink(event)"><img src="assets/images/logo.png" class="logo-photo"
+        alt="website logo" /></a>
   </header>
+
   <main id="main">
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
 
-    <div id="listOption"> <label for="list" class="dropdown-label">Trier par</label>
+    <div id="listOption"> <label class="dropdown-label">Trier par</label>
       <div data-value="popularity" class="dropdown" aria-label="Order By">
         <button onclick="dropdown(event)" aria-haspopup="listbox" id="dropdownButton" tabindex="0">Popularité</button>
         <img src="assets/icons/arrow.svg" alt="" class="arrow">
         <ul class="dropdown-options" role="listbox" aria-labelledby="dropdownButton"
           aria-activedescendant="popularityDropdown">
-          <li onclick="selectOption(event)" class="dropdown-hide" data-value="popularity" role="option"
-            id="popularityDropdown" aria-selected="true" tabindex="0">Popularité</li>
-          <li onclick="selectOption(event)" data-value="date" role="option" id="dateDropdown" tabindex="0">Date
-          </li>
-          <li onclick="selectOption(event)" data-value="title" role="option" id="titleDropdown" tabindex="0">Titre
+          <li onclick="selectOption(event)" onkeydown="keyboardNav(event)?selectOption(event):undefined" class="
+            dropdown-hide" data-value="popularity" role="option" id="popularityDropdown" aria-selected="true"
+            tabindex="0">Popularité</li>
+          <li onclick="selectOption(event)" onkeydown="keyboardNav(event)?selectOption(event):undefined"
+            data-value="title" role="option" id="titleDropdown" tabindex="0">Titre
           </li>
         </ul>
       </div>
     </div>
+
+
 
     <div class="userMedia"></div>
 
@@ -41,16 +45,18 @@
       <p class="titleLightbox"></p>
       <nav>
         <img src="/assets/icons/lightboxArrow.svg" alt="previousArrow" class="previous" aria-label="Previous image"
-          role="link" onclick="control(event)" tabindex="0">
+          role="link" onclick="control(event)" onkeydown="keyboardNav(event)?control(event):undefined" tabindex="0">
         <img src="/assets/icons/lightboxArrow.svg" alt="nextArrow" class="next" aria-label="Next image" role="link"
           onclick="control(event)" tabindex="0">
       </nav>
-      <img src="/assets/icons/close.svg" alt="close" class="close" aria-label="Close lightboxx" role="button"
-        onclick="control(event)" tabindex="0">
+      <img src="/assets/icons/Close.png" alt="close" class="close" aria-label="Close lightboxx" role="button"
+        onclick="control(event)" onkeydown="keyboardNav(event)?control(event):undefined" tabindex="0">
     </div>
 
+
     <div class="likeAndPrice">
-      <div class="like"><img src="/assets/icons/heart.svg" alt="like-heart"></div>
+      <div class="like"></div>
+      <img src="assets/icons/Heart.png" alt="likes" id="heartLike">
       <div class="pricePerDay">€/Jour</div>
     </div>
 
@@ -59,30 +65,31 @@
     <div class="modal">
       <header>
         <h2 class="NameOfPhotographer"></h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" tabindex="0" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" onkeydown="keyboardNav(event)?closeModal():undefined"
+          tabindex="0" alt="svg for close" />
       </header>
-      <form class="FormContact">
+      <form class="FormContact" id="formToContact" onsubmit="return sendForm(event)">
         <div class="formData">
-          <label for="FirtName">Prénom</label><br>
-          <input class="text-control" type="text" placeholder="younes" required="required"
+          <label id="first">Prénom</label><br>
+          <input class="text-control" type="text" required="required"
             pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
             title="Veuillez entrer 2 caractères ou plus pour le champ du Prénom." />
         </div>
         <div class="formData">
-          <label for="LastName">Nom</label><br />
-          <input class="text-control" type="text" placeholder="boudjemaa" required="required"
+          <label id="last">Nom</label><br />
+          <input class="text-control" type="text" required="required"
             pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
             title="Veuillez entrer 2 caractères ou plus pour le champ du Nom." />
         </div>
         <div class="formData">
-          <label for="email">E-mail</label><br />
-          <input class="text-control" type="email" placeholder="example@example.com" aria-required="true"
+          <label id="mail">E-mail</label><br />
+          <input class="text-control" type="email" aria-required="true"
             pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$"
             required="required" title="Veuillez entrer un email valide." />
         </div>
         <div class="formData">
-          <label for="Msg">Votre message</label><br>
-          <input type="text" class="text-control" name="message" required="none">
+          <label id="message">Votre message</label><br>
+          <input type="text" class="text-control" name="message" id="Big">
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
@@ -93,6 +100,8 @@
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/lightbox.js"></script>
   <script src="/scripts/utils/list.js"></script>
+  <script src="/scripts/utils/tabindex.js"></script>
+  <script src="/scripts/utils/KeyboardEvent.js"></script>
 </body>
 
 </html>

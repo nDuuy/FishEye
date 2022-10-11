@@ -36,15 +36,15 @@ async function displayUserData(photographer, DataMedia) {
 	// media display section 
 
 	// to connect to html
-	const UserWorkSection = document.querySelector(".userMedia")
+	const UserWorkSection = document.querySelector(".userMedia");
 	// use filter to find photographer by this id
-	const Works = DataMedia.filter(Media => Media.photographerId == getUserId())
+	const Works = DataMedia.filter(Media => Media.photographerId == getUserId());
 	// to connect to factory function and diplay it
 	Works.forEach((media) => {
 		const photographerWork = photographerFactory(media);
 		const UserWorkDom = photographerWork.getUserWorkDOM();
 		UserWorkSection.appendChild(UserWorkDom);
-	})
+	});
 }
 
 async function totalLike() {
@@ -54,9 +54,9 @@ async function totalLike() {
 	const totalCount = document.querySelector(".like");
 
 	let count = 0;
-	likes.forEach(like => count += parseInt(like.textContent))
+	likes.forEach(like => count += parseInt(like.textContent));
 
-	totalCount.textContent = count
+	totalCount.textContent = count;
 }
 
 // get id of photographer 
@@ -95,22 +95,7 @@ function orderWork() {
 					let secondNumber = parseInt(nextItem.querySelector(".number").textContent);
 					return secondNumber - firstNumber;
 				}
-			)
-			break;
-
-		// to filtred by date
-		case "date":
-
-			content.sort(
-
-				// function for check date of media by using the value date who we setup early
-				// and we class them to + to -
-				function (item, nextItem) {
-					let firstString = item.querySelector("[data-date]").dataset.date;
-					let secondString = nextItem.querySelector("[data-date]").dataset.date;
-					return secondString.localeCompare(firstString);
-				}
-			)
+			);
 			break;
 
 		// to filtred by title
@@ -125,7 +110,7 @@ function orderWork() {
 					let secondString = nextItem.querySelector(".EverythingDiv>:nth-child(1)").textContent.toLowerCase();
 					return firstString.localeCompare(secondString);
 				}
-			)
+			);
 			break;
 
 		// if anything is chose let the order by default
@@ -142,7 +127,9 @@ function orderWork() {
 async function init() {
 
 	// get data of photographer before load the other function 
-	const { photographers, media } = await getData();
+	const {
+		photographers, media
+	} = await getData();
 
 	// find photographer by params of the page 
 	const photographer = photographers.find(photographe => photographe.id == getUserId());
@@ -157,5 +144,3 @@ async function init() {
 }
 
 init();
-
-
