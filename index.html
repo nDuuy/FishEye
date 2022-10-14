@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,7 +11,9 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" alt="website Logo" />
+    <a href="index.html" aria-label="Fisheye Home page">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" role="link" />
+    </a>
     <h1>Nos photographes</h1>
   </header>
   <main id="main">
@@ -19,6 +21,8 @@
   </main>
   <script src="scripts/factories/UserInfo.js"></script>
   <script src="scripts/pages/index.js"></script>
+  <script src="/scripts/utils/KeyboardEvent.js"></script>
+  <script src="/scripts/utils/tabindex.js"></script>
 </body>
 
 </html>

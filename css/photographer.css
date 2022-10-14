@@ -161,6 +161,8 @@ form input {
 
 #Big {
   height: 20vh;
+  width: inherit;
+  resize: none;
 }
 
 /* main */
@@ -223,6 +225,10 @@ form input {
 .iconSvg {
   width: 1vw;
   height: 2vh;
+}
+
+.iconSvg:hover {
+  transform: scale(1.2);
 }
 
 .pricePerDay {
