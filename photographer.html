@@ -32,6 +32,9 @@
           <li onclick="selectOption(event)" onkeydown="keyboardNav(event)?selectOption(event):undefined" class="
             dropdown-hide" data-value="popularity" role="option" id="popularityDropdown" aria-selected="true"
             tabindex="0">Popularité</li>
+          <li onclick="selectOption(event)" data-value="date" role="option" id="dateDropdown" aria-selected="true"
+            tabindex="0" onkeydown="keyboardNav(event)?selectOption(event):undefined">Date
+          </li>
           <li onclick="selectOption(event)" onkeydown="keyboardNav(event)?selectOption(event):undefined"
             data-value="title" role="option" id="titleDropdown" tabindex="0">Titre
           </li>
@@ -75,7 +78,7 @@
 
         <div class="formData">
           <label id="first">Prénom</label><br>
-          <input class="text-control" type="text" required="required"
+          <input class="text-control" type="text" required="required" id="Firstname"
             pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
             title="Veuillez entrer 2 caractères ou plus pour le champ du Prénom." aria-label="First name"
             aria-labelledby="firstNameLabel" />
@@ -83,7 +86,7 @@
 
         <div class="formData">
           <label id="last">Nom</label><br />
-          <input class="text-control" type="text" required="required"
+          <input class="text-control" type="text" required="required" id="Lastname"
             pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$"
             title="Veuillez entrer 2 caractères ou plus pour le champ du Nom." aria-label="Last name"
             aria-labelledby="LasstNameLabel" />
@@ -91,15 +94,15 @@
 
         <div class="formData">
           <label id="mail">E-mail</label><br />
-          <input class="text-control" type="email" aria-required="true"
+          <input class="text-control" type="email" aria-required="true" id="eMail"
             pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$"
             required="required" title="Veuillez entrer un email valide." aria-label="Email"
             aria-labelledby="emailLabel" />
         </div>
 
         <div class="formData">
-          <label for="Your message" id="message">Votre message</label><br>
-          <textarea class="text-control" type="text" name="message" id="Big" aria-label="Your message"
+          <label id="message">Votre message</label><br>
+          <textarea class="text-control" type="text" name="message" id="Big" aria-label="message"
             aria-labelledby="yourMessageLabel" required></textarea>
         </div>
 

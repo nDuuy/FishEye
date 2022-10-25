@@ -5,10 +5,10 @@ function closeModal() {
 }
 
 function getFormData() {
-    const firstName = document.getElementById("first")
-    const lastName = document.getElementById("last")
-    const email = document.getElementById("mail")
-    const Message = document.getElementById("message")
+    const firstName = document.getElementById("Firstname").value;
+    const lastName = document.getElementById("Lastname").value;
+    const email = document.getElementById("eMail").value;
+    const Message = document.getElementById("Big").value;
     const data = { firstName, lastName, email, Message };
 
 
@@ -19,8 +19,8 @@ function sendForm(event) {
 
     event.preventDefault();
 
-    console.log(getFormData());
-    // Envoyer 'data' à l'email du photographe avec l'id de getPhotographerId()
+    console.table(getFormData());
+
 
     closeModal();
     return false;

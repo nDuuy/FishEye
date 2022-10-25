@@ -98,6 +98,17 @@ function orderWork() {
 			);
 			break;
 
+		case "date":
+			// De + à -
+			content.sort(
+				function (item, nextItem) {
+					let firstString = item.querySelector("[data-date]").dataset.date;
+					let secondString = nextItem.querySelector("[data-date]").dataset.date;
+					return secondString.localeCompare(firstString);
+				}
+			)
+			break;
+
 		// to filtred by title
 		case "title":
 

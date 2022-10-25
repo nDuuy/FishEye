@@ -29,28 +29,6 @@ function lightbox(event) {
     lightbox.classList.toggle('lightbox-active');
 }
 
-function loadLightbox() {
-
-    // select our lightbox
-    const lightbox = document.querySelector(".lightbox");
-    // select our paragrpaher empty 
-    const lightboxTtile = lightbox.querySelector("p");
-    // get data from our early function
-    const works = getMediaLighbox();
-    // select current media and title
-    const currentMediaKey = lightbox.dataset.key;
-    const currentMediaTitle = works[currentMediaKey].querySelector("p").textContent;
-    const currentMedia = works[currentMediaKey].querySelector(".thumb-img").cloneNode(true);
-    currentMedia.setAttribute("tabindex", "4");
-
-    // to insert media before title 
-    lightbox.insertBefore(currentMedia, lightboxTtile);
-    lightboxTtile.textContent = currentMediaTitle;
-
-    lightbox.querySelector(".thumb-img").removeAttribute('onclick')
-}
-
-
 
 function getMediaLighbox() {
     // debugger

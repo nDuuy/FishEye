@@ -2,7 +2,7 @@ function photographerFactory(data) {
 	// debugger
 	// link to data.json
 	const {
-		portrait, name, city, country, tagline, price, id, title, image, video, likes
+		portrait, name, city, country, tagline, price, id, title, image, video, likes, date
 	} = data;
 	const picture = `assets/images/${image}`;
 	const videoData = `assets/images/${video}`;
@@ -218,6 +218,7 @@ function photographerFactory(data) {
 		userMedia.setAttribute("tabindex", 0);
 		userMedia.setAttribute("aria-haspopup", "dialog");
 		userMedia.setAttribute("aria-label", title)
+		userMedia.dataset.date = date
 		return (userMedia);
 	}
 
